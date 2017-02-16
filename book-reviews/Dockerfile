@@ -4,7 +4,8 @@ WORKDIR /work
 
 ADD . .
 
-RUN mkdir /data
+RUN mkdir /data && \
+    pip install BeautifulSoup
 
 ENTRYPOINT ["./convert_all.sh"]
 CMD [""]
