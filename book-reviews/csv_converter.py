@@ -72,9 +72,9 @@ with open("{0}_result.csv".format(csvFile), 'w') as csvfile_write:
             # this is where we are going to extract the characters from the array blob and assign weighted values
             row_object = {}
             #weighted_text = get_weighted_text(text_array)
-            if row[0] == "5.0":
+            if review == "5.0":
                 row_object = {'score': 1}
-            elif row[0] == "1.0" or polar == True:
+            elif (review == "1.0" or review == "2.0") or polar == True:
                 row_object = {'score': 0}
 
             # for index, value in enumerate(weighted_text):
@@ -83,12 +83,12 @@ with open("{0}_result.csv".format(csvFile), 'w') as csvfile_write:
                 # if wrote_head == False:
                 #     fieldnames.append('word_{0}'.format(index))
                     #fieldnames.append('value_{0}'.format(index))
-            row_object["title"] = title
-            row_object["text"] = text
+            if row_object.get('score', "") != "":
+                row_object["title"] = title
+                row_object["text"] = text
                 #row_object[value_key] = values[1]
 
-            # if wrote_head == False:
-            #     writer.writeheader()
-            #     wrote_head = True
-
-            writer.writerow(row_object)
+                # if wrote_head == False:
+                #     writer.writeheader()
+                #     wrote_head = True
+                writer.writerow(row_object)
