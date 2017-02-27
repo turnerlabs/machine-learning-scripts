@@ -9,7 +9,7 @@ def parse_file(path):
   print path
   g = gzip.open(path, 'r')
   with open("{0}_result.csv".format(path), 'w') as csvfile_write:
-      fieldnames = ['score', "label", "text"]
+      fieldnames = ['score', "text"]
       writer = csv.DictWriter(csvfile_write, fieldnames=fieldnames)
 
       for l in g:
