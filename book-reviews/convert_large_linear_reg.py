@@ -15,21 +15,13 @@ def parse_file(path):
       for l in g:
         data = eval(l)
         score = int(data["overall"])
-        #if data["overall"] == 1:
-        #    score = 0
-        #elif data["overall"] == 5:
-        #    score = 1
+  
+      row = {}
+      row["score"] = score
+      row["text"] = data["reviewText"]
+      writer.writerow(row)
 
-        if score >= 0 and score <= 5:
-            row = {}
-            row["score"] = score
-            row["text"] = data["reviewText"]
-            writer.writerow(row)
 
-# try:
 print("Converting {0}".format(args[1]))
 csvFile = args[1]
 parse_file(csvFile)
-# except e:
-#     print "Must pass in csv to convert"
-#     sys.exit()
